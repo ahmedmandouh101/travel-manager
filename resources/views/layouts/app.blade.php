@@ -11,44 +11,6 @@
         <script src="https://cdn.tailwindcss.com"></script>
     @endif
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .active-nav {
-            @apply border-indigo-500 text-indigo-600;
-        }
-        .nav-link {
-            @apply border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors duration-200;
-        }
-        .card-hover {
-            @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
-        }
-        .btn-primary {
-            @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-lg transform transition-all duration-200 hover:scale-105;
-        }
-        .btn-secondary {
-            @apply inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200;
-        }
-        .btn-danger {
-            @apply inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-200;
-        }
-        .btn-success {
-            @apply inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200;
-        }
-        .modal-overlay {
-            @apply fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity duration-300;
-        }
-        .modal-content {
-            @apply inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full;
-        }
-        .input-field {
-            @apply mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm transition-all duration-200;
-        }
-        .badge {
-            @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
-        }
-        .badge-hotel { @apply bg-blue-100 text-blue-800; }
-        .badge-restaurant { @apply bg-green-100 text-green-800; }
-        .badge-entertainment { @apply bg-purple-100 text-purple-800; }
-    </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 via-indigo-50 to-purple-50 min-h-screen">
     <!-- Navigation -->
@@ -65,19 +27,19 @@
                         </a>
                     </div>
                     <div class="hidden sm:ml-10 sm:flex sm:space-x-1">
-                        <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active-nav' : '' }} inline-flex items-center px-4 py-2 border-b-2 text-sm font-medium rounded-t-lg">
+                        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors duration-200' }} inline-flex items-center px-4 py-2 border-b-2 text-sm font-medium rounded-t-lg">
                             <i class="fas fa-home mr-2"></i> Dashboard
                         </a>
-                        <a href="{{ route('web.places.index') }}" class="nav-link {{ request()->routeIs('web.places.*') ? 'active-nav' : '' }} inline-flex items-center px-4 py-2 border-b-2 text-sm font-medium rounded-t-lg">
+                        <a href="{{ route('web.places.index') }}" class="{{ request()->routeIs('web.places.*') ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors duration-200' }} inline-flex items-center px-4 py-2 border-b-2 text-sm font-medium rounded-t-lg">
                             <i class="fas fa-map-marker-alt mr-2"></i> Places
                         </a>
-                        <a href="{{ route('web.tours.index') }}" class="nav-link {{ request()->routeIs('web.tours.*') ? 'active-nav' : '' }} inline-flex items-center px-4 py-2 border-b-2 text-sm font-medium rounded-t-lg">
+                        <a href="{{ route('web.tours.index') }}" class="{{ request()->routeIs('web.tours.*') ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors duration-200' }} inline-flex items-center px-4 py-2 border-b-2 text-sm font-medium rounded-t-lg">
                             <i class="fas fa-route mr-2"></i> Tours
                         </a>
-                        <a href="{{ route('web.bookings.index') }}" class="nav-link {{ request()->routeIs('web.bookings.*') ? 'active-nav' : '' }} inline-flex items-center px-4 py-2 border-b-2 text-sm font-medium rounded-t-lg">
+                        <a href="{{ route('web.bookings.index') }}" class="{{ request()->routeIs('web.bookings.*') ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors duration-200' }} inline-flex items-center px-4 py-2 border-b-2 text-sm font-medium rounded-t-lg">
                             <i class="fas fa-calendar-check mr-2"></i> Bookings
                         </a>
-                        <a href="{{ route('web.reviews.index') }}" class="nav-link {{ request()->routeIs('web.reviews.*') ? 'active-nav' : '' }} inline-flex items-center px-4 py-2 border-b-2 text-sm font-medium rounded-t-lg">
+                        <a href="{{ route('web.reviews.index') }}" class="{{ request()->routeIs('web.reviews.*') ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 transition-colors duration-200' }} inline-flex items-center px-4 py-2 border-b-2 text-sm font-medium rounded-t-lg">
                             <i class="fas fa-star mr-2"></i> Reviews
                         </a>
                     </div>

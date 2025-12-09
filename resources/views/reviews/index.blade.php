@@ -11,7 +11,7 @@
                 <h1 class="text-4xl font-bold text-gray-900 mb-2">Reviews</h1>
                 <p class="text-lg text-gray-600">View and manage customer reviews</p>
             </div>
-            <button onclick="openCreateModal()" class="btn-primary">
+            <button onclick="openCreateModal()" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md hover:shadow-lg transform transition-all duration-200 hover:scale-105">
                 <i class="fas fa-plus mr-2"></i> Add New Review
             </button>
         </div>
@@ -88,6 +88,8 @@
         </div>
     </div>
 </div>
+
+@endsection
 
 @push('scripts')
 <script>

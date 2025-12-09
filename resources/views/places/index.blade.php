@@ -11,7 +11,7 @@
                 <h1 class="text-4xl font-bold text-gray-900 mb-2">Places</h1>
                 <p class="text-lg text-gray-600">Manage tourist places and destinations</p>
             </div>
-            <button onclick="openCreateModal()" class="btn-primary">
+            <button onclick="openCreateModal()" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md hover:shadow-lg transform transition-all duration-200 hover:scale-105">
                 <i class="fas fa-plus mr-2"></i> Add New Place
             </button>
         </div>
@@ -32,8 +32,8 @@
 <!-- Create/Edit Modal -->
 <div id="place-modal" class="hidden fixed z-50 inset-0 overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:p-0">
-        <div class="modal-overlay" onclick="closeModal()"></div>
-        <div class="modal-content">
+        <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity duration-300" onclick="closeModal()"></div>
+        <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
             <form id="place-form" onsubmit="savePlace(event)">
                 <div class="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4">
                     <h3 class="text-xl font-bold text-white" id="modal-title">
@@ -47,13 +47,13 @@
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
                                 <i class="fas fa-signature mr-2 text-indigo-600"></i>Name
                             </label>
-                            <input type="text" id="place-name" required class="input-field border-2 py-3 px-4" placeholder="Enter place name">
+                            <input type="text" id="place-name" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm transition-all duration-200 border-2 py-3 px-4" placeholder="Enter place name">
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
                                 <i class="fas fa-tag mr-2 text-indigo-600"></i>Type
                             </label>
-                            <select id="place-type" required class="input-field border-2 py-3 px-4">
+                            <select id="place-type" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm transition-all duration-200 border-2 py-3 px-4">
                                 <option value="">Select type</option>
                                 <option value="hotel">Hotel</option>
                                 <option value="restaurant">Restaurant</option>
@@ -64,21 +64,21 @@
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
                                 <i class="fas fa-align-left mr-2 text-indigo-600"></i>Description
                             </label>
-                            <textarea id="place-description" rows="4" class="input-field border-2 py-3 px-4" placeholder="Enter description"></textarea>
+                            <textarea id="place-description" rows="4" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm transition-all duration-200 border-2 py-3 px-4" placeholder="Enter description"></textarea>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
                                 <i class="fas fa-map-marker-alt mr-2 text-indigo-600"></i>Address
                             </label>
-                            <input type="text" id="place-address" class="input-field border-2 py-3 px-4" placeholder="Enter address">
+                            <input type="text" id="place-address" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm transition-all duration-200 border-2 py-3 px-4" placeholder="Enter address">
                         </div>
                     </div>
                 </div>
                 <div class="bg-gray-50 px-6 py-4 flex justify-end space-x-3">
-                    <button type="button" onclick="closeModal()" class="btn-secondary">
+                    <button type="button" onclick="closeModal()" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                         <i class="fas fa-times mr-2"></i>Cancel
                     </button>
-                    <button type="submit" class="btn-primary">
+                    <button type="submit" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md hover:shadow-lg transform transition-all duration-200 hover:scale-105">
                         <i class="fas fa-save mr-2"></i>Save Place
                     </button>
                 </div>
@@ -89,18 +89,21 @@
 
 
 
+@endsection
+
 @push('scripts')
 <script>
     let places = [];
     let editingId = null;
 
     function getTypeBadge(type) {
+        const baseClass = 'inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold';
         const badges = {
-            'hotel': 'badge badge-hotel',
-            'restaurant': 'badge badge-restaurant',
-            'entertainment': 'badge badge-entertainment'
+            'hotel': `${baseClass} bg-blue-100 text-blue-800`,
+            'restaurant': `${baseClass} bg-green-100 text-green-800`,
+            'entertainment': `${baseClass} bg-purple-100 text-purple-800`
         };
-        return badges[type] || 'badge bg-gray-100 text-gray-800';
+        return badges[type] || `${baseClass} bg-gray-100 text-gray-800`;
     }
 
     function getTypeIcon(type) {
@@ -137,7 +140,7 @@
                         <i class="fas fa-map-marker-alt text-gray-300 text-6xl mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">No places found</h3>
                         <p class="text-gray-600 mb-4">Get started by adding your first place</p>
-                        <button onclick="openCreateModal()" class="btn-primary">
+                        <button onclick="openCreateModal()" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md hover:shadow-lg transform transition-all duration-200 hover:scale-105">
                             <i class="fas fa-plus mr-2"></i>Add Place
                         </button>
                     </div>
@@ -147,7 +150,7 @@
         }
         
         container.innerHTML = places.map(place => `
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div class="bg-gradient-to-r from-indigo-500 to-purple-500 p-6">
                     <div class="flex items-center justify-between">
                         <div class="bg-white bg-opacity-20 p-3 rounded-xl">
@@ -171,10 +174,10 @@
                             <span class="text-sm font-medium">${place.tours ? place.tours.length : 0} Tours</span>
                         </div>
                         <div class="flex space-x-2">
-                            <button onclick="editPlace(${place.id})" class="btn-success">
+                            <button onclick="editPlace(${place.id})" class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button onclick="deletePlace(${place.id})" class="btn-danger">
+                            <button onclick="deletePlace(${place.id})" class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-200">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>

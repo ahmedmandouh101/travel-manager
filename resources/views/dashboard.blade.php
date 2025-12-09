@@ -13,7 +13,7 @@
     <!-- Stats Grid -->
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-8">
         <!-- Places Card -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border-l-4 border-blue-500">
+        <div class="bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-l-4 border-blue-500">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600 mb-1">Places</p>
@@ -31,7 +31,7 @@
         </div>
 
         <!-- Tours Card -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border-l-4 border-purple-500">
+        <div class="bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-l-4 border-purple-500">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600 mb-1">Tours</p>
@@ -49,7 +49,7 @@
         </div>
 
         <!-- Bookings Card -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border-l-4 border-green-500">
+        <div class="bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-l-4 border-green-500">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600 mb-1">Bookings</p>
@@ -67,7 +67,7 @@
         </div>
 
         <!-- Reviews Card -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 card-hover border-l-4 border-yellow-500">
+        <div class="bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-l-4 border-yellow-500">
             <div class="flex items-center justify-between">
                 <div>
                     <p class="text-sm font-medium text-gray-600 mb-1">Reviews</p>

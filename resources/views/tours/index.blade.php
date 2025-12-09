@@ -11,7 +11,7 @@
                 <h1 class="text-4xl font-bold text-gray-900 mb-2">Tours</h1>
                 <p class="text-lg text-gray-600">Manage tour packages and experiences</p>
             </div>
-            <button onclick="openCreateModal()" class="btn-primary">
+            <button onclick="openCreateModal()" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md hover:shadow-lg transform transition-all duration-200 hover:scale-105">
                 <i class="fas fa-plus mr-2"></i> Add New Tour
             </button>
         </div>
@@ -28,8 +28,8 @@
 <!-- Modal -->
 <div id="tour-modal" class="hidden fixed z-50 inset-0 overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:p-0">
-        <div class="modal-overlay" onclick="closeModal()"></div>
-        <div class="modal-content">
+        <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity duration-300" onclick="closeModal()"></div>
+        <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
             <form id="tour-form" onsubmit="saveTour(event)">
                 <div class="bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-4">
                     <h3 class="text-xl font-bold text-white" id="modal-title">
@@ -43,13 +43,13 @@
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
                                 <i class="fas fa-heading mr-2 text-purple-600"></i>Title
                             </label>
-                            <input type="text" id="tour-title" required class="input-field border-2 py-3 px-4" placeholder="Enter tour title">
+                            <input type="text" id="tour-title" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm transition-all duration-200 border-2 py-3 px-4" placeholder="Enter tour title">
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
                                 <i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Place
                             </label>
-                            <select id="tour-place-id" class="input-field border-2 py-3 px-4">
+                            <select id="tour-place-id" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm transition-all duration-200 border-2 py-3 px-4">
                                 <option value="">Select a place</option>
                             </select>
                         </div>
@@ -58,28 +58,28 @@
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
                                     <i class="fas fa-dollar-sign mr-2 text-purple-600"></i>Price
                                 </label>
-                                <input type="number" step="0.01" id="tour-price" required class="input-field border-2 py-3 px-4" placeholder="0.00">
+                                <input type="number" step="0.01" id="tour-price" required class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm transition-all duration-200 border-2 py-3 px-4" placeholder="0.00">
                             </div>
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-2">
                                     <i class="fas fa-clock mr-2 text-purple-600"></i>Duration (hours)
                                 </label>
-                                <input type="number" id="tour-duration" class="input-field border-2 py-3 px-4" placeholder="Hours">
+                                <input type="number" id="tour-duration" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm transition-all duration-200 border-2 py-3 px-4" placeholder="Hours">
                             </div>
                         </div>
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-2">
                                 <i class="fas fa-align-left mr-2 text-purple-600"></i>Description
                             </label>
-                            <textarea id="tour-description" rows="4" class="input-field border-2 py-3 px-4" placeholder="Enter description"></textarea>
+                            <textarea id="tour-description" rows="4" class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm transition-all duration-200 border-2 py-3 px-4" placeholder="Enter description"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="bg-gray-50 px-6 py-4 flex justify-end space-x-3">
-                    <button type="button" onclick="closeModal()" class="btn-secondary">
+                    <button type="button" onclick="closeModal()" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all duration-200">
                         <i class="fas fa-times mr-2"></i>Cancel
                     </button>
-                    <button type="submit" class="btn-primary">
+                    <button type="submit" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md hover:shadow-lg transform transition-all duration-200 hover:scale-105">
                         <i class="fas fa-save mr-2"></i>Save Tour
                     </button>
                 </div>
@@ -87,6 +87,8 @@
         </div>
     </div>
 </div>
+
+@endsection
 
 @push('scripts')
 <script>
@@ -126,7 +128,7 @@
                     <div class="bg-white rounded-2xl shadow-lg p-8 inline-block">
                         <i class="fas fa-route text-gray-300 text-6xl mb-4"></i>
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">No tours found</h3>
-                        <button onclick="openCreateModal()" class="btn-primary mt-4">
+                        <button onclick="openCreateModal()" class="mt-4 inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-md hover:shadow-lg transform transition-all duration-200 hover:scale-105">
                             <i class="fas fa-plus mr-2"></i>Add Tour
                         </button>
                     </div>
@@ -136,7 +138,7 @@
         }
         
         container.innerHTML = tours.map(tour => `
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 <div class="bg-gradient-to-r from-purple-500 to-pink-500 p-6">
                     <div class="flex items-center justify-between">
                         <div class="bg-white bg-opacity-20 p-3 rounded-xl">
@@ -167,10 +169,10 @@
                     </div>
                     <div class="flex justify-end pt-4 border-t border-gray-200">
                         <div class="flex space-x-2">
-                            <button onclick="editTour(${tour.id})" class="btn-success">
+                            <button onclick="editTour(${tour.id})" class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button onclick="deleteTour(${tour.id})" class="btn-danger">
+                            <button onclick="deleteTour(${tour.id})" class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-200">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
