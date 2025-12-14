@@ -241,6 +241,19 @@
     Promise.all([loadUsers(), loadTours(), loadPlaces()]).then(() => {
         loadReviews();
     });
+
+    // Check for action=create in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('action') === 'create') {
+        setTimeout(() => {
+            if (typeof openCreateModal === 'function') {
+                openCreateModal();
+                // Clean URL
+                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.replaceState({path: newUrl}, '', newUrl);
+            }
+        }, 500);
+    }
 </script>
 @endpush
 

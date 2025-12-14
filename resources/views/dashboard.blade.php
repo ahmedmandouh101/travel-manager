@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('title', 'Dashboard')
 
 @section('content')
@@ -89,16 +90,16 @@
     <div class="bg-white rounded-2xl shadow-lg p-6">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Actions</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <a href="{{ route('web.places.index') }}" onclick="event.preventDefault(); window.location.href='{{ route('web.places.index') }}'; setTimeout(() => { if (typeof openCreateModal === 'function') openCreateModal(); }, 100);" class="flex items-center justify-center p-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-200 transform hover:scale-105">
+            <a href="{{ route('web.places.index', ['action' => 'create']) }}" class="flex items-center justify-center p-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-200 transform hover:scale-105">
                 <i class="fas fa-plus mr-2"></i> Add Place
             </a>
-            <a href="{{ route('web.tours.index') }}" onclick="event.preventDefault(); window.location.href='{{ route('web.tours.index') }}'; setTimeout(() => { if (typeof openCreateModal === 'function') openCreateModal(); }, 100);" class="flex items-center justify-center p-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl hover:from-purple-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105">
+            <a href="{{ route('web.tours.index', ['action' => 'create']) }}" class="flex items-center justify-center p-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl hover:from-purple-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105">
                 <i class="fas fa-plus mr-2"></i> Add Tour
             </a>
-            <a href="{{ route('web.bookings.index') }}" onclick="event.preventDefault(); window.location.href='{{ route('web.bookings.index') }}'; setTimeout(() => { if (typeof openCreateModal === 'function') openCreateModal(); }, 100);" class="flex items-center justify-center p-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-200 transform hover:scale-105">
+            <a href="{{ route('web.bookings.index', ['action' => 'create']) }}" class="flex items-center justify-center p-4 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl hover:from-green-600 hover:to-green-700 transition-all duration-200 transform hover:scale-105">
                 <i class="fas fa-plus mr-2"></i> Add Booking
             </a>
-            <a href="{{ route('web.reviews.index') }}" onclick="event.preventDefault(); window.location.href='{{ route('web.reviews.index') }}'; setTimeout(() => { if (typeof openCreateModal === 'function') openCreateModal(); }, 100);" class="flex items-center justify-center p-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-xl hover:from-yellow-600 hover:to-yellow-700 transition-all duration-200 transform hover:scale-105">
+            <a href="{{ route('web.reviews.index', ['action' => 'create']) }}" class="flex items-center justify-center p-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-xl hover:from-yellow-600 hover:to-yellow-700 transition-all duration-200 transform hover:scale-105">
                 <i class="fas fa-plus mr-2"></i> Add Review
             </a>
         </div>
